@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Abel/Trabajos/Abel_Zambrano_DAM_VIOD/Android_Studio/Falling_Geo/app/src/main/res/layout/activity_game_menus.xml" value="0.21875" />
+        <entry key="..\:/Abel/Trabajos/Abel_Zambrano_DAM_VIOD/Android_Studio/Falling_Geo/app/src/main/res/layout/activity_login.xml" value="0.21875" />
+        <entry key="..\:/Abel/Trabajos/Abel_Zambrano_DAM_VIOD/Android_Studio/Falling_Geo/app/src/main/res/layout/activity_main.xml" value="0.21875" />
+        <entry key="..\:/Abel/Trabajos/Abel_Zambrano_DAM_VIOD/Android_Studio/Falling_Geo/app/src/main/res/layout/fragment_blank.xml" value="0.21875" />
+        <entry key="..\:/Abel/Trabajos/Abel_Zambrano_DAM_VIOD/Android_Studio/Falling_Geo/app/src/main/res/layout/fragment_element_level_list.xml" value="0.21875" />
+        <entry key="..\:/Abel/Trabajos/Abel_Zambrano_DAM_VIOD/Android_Studio/Falling_Geo/app/src/main/res/layout/fragment_game.xml" value="0.2515625" />
+        <entry key="..\:/Abel/Trabajos/Abel_Zambrano_DAM_VIOD/Android_Studio/Falling_Geo/app/src/main/res/layout/fragment_game_.xml" value="0.2046875" />
+        <entry key="..\:/Abel/Trabajos/Abel_Zambrano_DAM_VIOD/Android_Studio/Falling_Geo/app/src/main/res/layout/fragment_infinit_mode.xml" value="0.2515625" />
+        <entry key="..\:/Abel/Trabajos/Abel_Zambrano_DAM_VIOD/Android_Studio/Falling_Geo/app/src/main/res/layout/fragment_level_list.xml" value="0.34782608695652173" />
+        <entry key="..\:/Abel/Trabajos/Abel_Zambrano_DAM_VIOD/Android_Studio/Falling_Geo/app/src/main/res/layout/fragment_level_list_list.xml" value="0.34782608695652173" />
+        <entry key="..\:/Abel/Trabajos/Abel_Zambrano_DAM_VIOD/Android_Studio/Falling_Geo/app/src/main/res/layout/fragment_levels.xml" value="0.2046875" />
+        <entry key="..\:/Abel/Trabajos/Abel_Zambrano_DAM_VIOD/Android_Studio/Falling_Geo/app/src/main/res/layout/fragment_plane_mode.xml" value="0.2515625" />
+        <entry key="..\:/Abel/Trabajos/Abel_Zambrano_DAM_VIOD/Android_Studio/Falling_Geo/app/src/main/res/layout/fragment_scrolling.xml" value="0.21875" />
+        <entry key="..\:/Abel/Trabajos/Abel_Zambrano_DAM_VIOD/Android_Studio/Falling_Geo/app/src/main/res/layout/fragment_shop.xml" value="0.2515625" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
