@@ -9,11 +9,13 @@
         android:roundIcon="@drawable/g_triangulo_png"
         android:supportsRtl="true"
         android:theme="@style/Theme.FallingGeo">
-        <activity android:name=".RegistActivity"></activity>
-        <activity android:name=".ui.GameMenusActivity"
-            android:exported="true"/>
-        <activity android:name=".LoginActivity"
-            android:exported="true"/>
+        <activity android:name=".RegistActivity" />
+        <activity
+            android:name=".ui.GameMenusActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
