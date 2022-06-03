@@ -13,7 +13,7 @@ import com.google.android.material.textfield.TextInputEditText
 
 class GameMenusActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGameMenusBinding
-
+    val buttonPanelMode= findViewById<Button>(R.id.plane_mode_button)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGameMenusBinding.inflate(layoutInflater)
@@ -27,7 +27,11 @@ class GameMenusActivity : AppCompatActivity() {
         viewPager.adapter = sectionPagerAdapter
         val tabs: TabLayout = binding.tabs
         tabs.setupWithViewPager(viewPager)
-
+        buttonPanelMode.setOnClickListener(){
+            //TESTING
+            startActivity(Intent(this, PlaneModeActivity::class.java))
+            finish()
+        }
 
 //        val levelButtonInput = findViewById<Button>(R.id.level_button)
 //        levelButtonInput.setOnClickListener(){
