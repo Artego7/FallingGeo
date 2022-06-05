@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import androidx.fragment.app.FragmentStatePagerAdapter
 import com.example.fallinggeo.R
 
 private val TAB_TITLES = arrayOf(
@@ -18,12 +19,17 @@ private val TAB_TITLES = arrayOf(
  * one of the sections/tabs/pages.
  */
 class SectionPagerAdapter(private val context: Context, fm: FragmentManager) :
-    FragmentPagerAdapter(fm) {
+    FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
+    // Aquesta funció indica el fragment que s'ha de posar a cada Tab
     override fun getItem(position: Int): Fragment {
-        // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1)
+        return when (position){
+            0 -> ShopFragment() // ParticlesWithSimpleAdapterFragment()
+            1 -> ()
+            2 -> ()
+            3 -> ()
+            else -> throw IllegalStateException("There's only 4 tabs")
+        }
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
@@ -32,6 +38,6 @@ class SectionPagerAdapter(private val context: Context, fm: FragmentManager) :
 
     override fun getCount(): Int {
         // Show 2 total pages.
-        return 4
+        return TAB_TITLES.size
     }
 }

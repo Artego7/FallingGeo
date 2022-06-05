@@ -23,10 +23,10 @@ class GameMenusActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val sectionPagerAdapter = SectionPagerAdapter(this, supportFragmentManager)
-        val viewPager: ViewPager = binding.viewPager
-        viewPager.adapter = sectionPagerAdapter
+        binding.viewPager.adapter = sectionPagerAdapter
+
         val tabs: TabLayout = binding.tabs
-        tabs.setupWithViewPager(viewPager)
+        tabs.setupWithViewPager(binding.viewPager)
         buttonPanelMode.setOnClickListener(){
             //TESTING
             startActivity(Intent(this, PlaneModeActivity::class.java))
