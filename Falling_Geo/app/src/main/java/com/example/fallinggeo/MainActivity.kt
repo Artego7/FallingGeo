@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import com.google.android.material.textfield.TextInputEditText
+import com.example.fallinggeo.game.InfinityModeActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -13,14 +13,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val startButton = findViewById<Button>(R.id.start_button)
         startButton.setOnClickListener(){
-            startActivity(Intent(this, LoginActivity::class.java))
+            startActivity(Intent(this, InfinityModeActivity::class.java))
+            finish()
         }
 
-
-
-
-    }
-    fun aaa(string: String){
-        println(string)
     }
 }

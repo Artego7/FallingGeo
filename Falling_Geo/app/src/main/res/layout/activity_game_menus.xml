@@ -7,22 +7,19 @@
     android:layout_height="match_parent">
 
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|start"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginTop="6dp"
-        android:layout_marginStart="6dp"
-        app:srcCompat="@drawable/g_triangulo_png" />
-
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
+        android:id="@+id/menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="70dp"
         android:theme="@style/Theme.FallingGeo.AppBarOverlay">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/menu_button"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:menu="@menu/menu_player"
+            app:title="@string/app_name"
+            />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"

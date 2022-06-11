@@ -12,7 +12,6 @@ import com.example.fallinggeo.databinding.FragmentSectionLabelBinding
 
 class PlaceholderFragment : Fragment() {
 
-    private lateinit var pageViewModel: PageViewModel
     private var _binding: FragmentSectionLabelBinding? = null
 
     // This property is only valid between onCreateView and
@@ -21,9 +20,7 @@ class PlaceholderFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        pageViewModel = ViewModelProvider(this).get(PageViewModel::class.java).apply {
-            setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
-        }
+
     }
 
     override fun onCreateView(
@@ -34,11 +31,6 @@ class PlaceholderFragment : Fragment() {
         _binding = FragmentSectionLabelBinding.inflate(inflater, container, false)
         val root = binding.root
 
-        val textView: TextView = binding.sectionLabel
-        pageViewModel.text.observe(viewLifecycleOwner, Observer {
-        pageViewModel.testPVM(it)
-            //textView.text = it
-        })
         return root
     }
 
@@ -53,14 +45,14 @@ class PlaceholderFragment : Fragment() {
          * Returns a new instance of this fragment for the given section
          * number.
          */
-        @JvmStatic
-        fun newInstance(sectionNumber: Int): PlaceholderFragment {
-            return PlaceholderFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(ARG_SECTION_NUMBER, sectionNumber)
-                }
-            }
-        }
+//        @JvmStatic
+//        fun newInstance(sectionNumber: Int): PlaceholderFragment {
+//            return PlaceholderFragment().apply {
+//                arguments = Bundle().apply {
+//                    putInt(ARG_SECTION_NUMBER, sectionNumber)
+//                }
+//            }
+//        }
     }
 
     override fun onDestroyView() {

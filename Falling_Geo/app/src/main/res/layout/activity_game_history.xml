@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/BackgroundOnMovement"
+        android:id="@+id/background"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/rectangle_blue_test"
@@ -24,7 +24,7 @@
         android:text="TODO"
         android:textAlignment="center"
         android:textSize="96sp"
-        app:layout_constraintBottom_toBottomOf="@+id/BackgroundOnMovement"
+        app:layout_constraintBottom_toBottomOf="@+id/background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

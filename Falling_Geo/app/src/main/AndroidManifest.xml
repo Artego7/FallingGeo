@@ -4,20 +4,16 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/g_triangulo_png"
+        android:icon="@drawable/g_triangle"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/g_triangulo_png"
+        android:roundIcon="@drawable/g_triangle"
         android:supportsRtl="true"
         android:theme="@style/Theme.FallingGeo">
         <activity
-            android:name=".PlaneMenuModeFragment"
+            android:name=".game.InfinityModeActivity"
             android:exported="false" />
         <activity
-            android:name=".ShopActivity"
-            android:exported="false"
-            android:label="@string/title_activity_shop"
-            android:theme="@style/Theme.FallingGeo.NoActionBar" />
-        <activity android:name=".RegistActivity" />
+            android:name=".RegistActivity" />
         <activity
             android:name=".ui.GameMenusActivity"
             android:exported="true" />
