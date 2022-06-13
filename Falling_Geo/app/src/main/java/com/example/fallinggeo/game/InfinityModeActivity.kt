@@ -16,9 +16,12 @@ import com.example.fallinggeo.data.PlayerObjArray
 import com.example.fallinggeo.ui.GameMenusActivity
 
 /****************************************
-    No se molt be perque hi ha vegades que el joc es para
-    y deixa de funcionar part d'aquest activity, pero
-    tot el demés funciona i no salta cap error
+    No se molt be perque, pero hi ha vegades que el joc es para
+    y deixa de funcionar part d'aquest activity, pero tot el
+    demés funciona i no salta cap error.
+    A part a vegades pasa que en la part del joc es posicionen
+    els elements a on no toca, segurament es error meu del xml,
+    pero no se com solucionar-ho be.
 *****************************************/
 
 class InfinityModeActivity : AppCompatActivity() {
@@ -72,8 +75,7 @@ class InfinityModeActivity : AppCompatActivity() {
         }
         //No va be
         buttonRestart.setOnClickListener{
-            PlayerObjArray.moveTapeToSpawn(tape, displayMetrics, pointsInit)
-            PlayerObjArray.restartGame(pointsInit)
+            PlayerObjArray.restartGame(tape, displayMetrics, pointsInit)
             layerPause.visibility = View.INVISIBLE
             pauseRestartText.visibility = View.INVISIBLE
             buttonRestart.visibility = View.INVISIBLE

@@ -96,7 +96,8 @@ object PlayerObjArray: ArrayList<Player>() {
     private fun checkPassPlayer(tape: ImageView, player: ImageView): Boolean {
         return tape.y+tape.height <= player.y
     }
-    fun restartGame(points: TextView) {
+    fun restartGame(tape: ImageView, screen: DisplayMetrics, points: TextView) {
+        setSpawnTape(tape, screen)
         points.text = "0"
         tapeSpeed = 4f
         isPlaying = true
