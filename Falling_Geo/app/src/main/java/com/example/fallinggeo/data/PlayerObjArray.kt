@@ -26,7 +26,6 @@ object PlayerObjArray: ArrayList<Player>() {
     //-- Booleans --//
     var isPlaying = true
     var isPass = true
-    var isPause = false
 
     var tapeSpeed = 4f
 
@@ -40,7 +39,6 @@ object PlayerObjArray: ArrayList<Player>() {
         PlayerImg.id = PlayerObjArray[index].id
         points.text = PlayerObjArray[index].points.toString()
         isPlaying = true
-        isPause = false
         return PlayerImg
     }
 
@@ -68,17 +66,18 @@ object PlayerObjArray: ArrayList<Player>() {
         }
         return tape
     }
-    private fun moveTapeToSpawn(tape:ImageView, screen: DisplayMetrics, points: TextView): ImageView{
-        if (tape.y <= 100f){
+    fun moveTapeToSpawn(tape:ImageView, screen: DisplayMetrics, points: TextView): ImageView{
+        if (tape.y <= 10f){
             setSpawnTape(tape, screen)
         }
-        if(points.text.last().toInt() == 0 || points.text.last().toInt() == 5 ){
+        if((points.text.last().toInt() == 0 || points.text.last().toInt() == 5)
+            && points.text != "0"){
             tapeSpeed += 4f
         }
         return tape
     }
-    private fun moveTapeUp(tape:ImageView, bol: Boolean): ImageView{
-        if(bol) {
+    private fun moveTapeUp(tape:ImageView, bool: Boolean): ImageView{
+        if(bool) {
             tape.y -= tapeSpeed
         }
         return tape
@@ -97,29 +96,11 @@ object PlayerObjArray: ArrayList<Player>() {
     private fun checkPassPlayer(tape: ImageView, player: ImageView): Boolean {
         return tape.y+tape.height <= player.y
     }
-    fun update(tape: ImageView, player: ImageView, points:TextView,
-               layerMenu : ImageView, pauseRestartText: TextView,
-               buttonRestart: ImageView, buttonReturn: Button,
-               screen: DisplayMetrics){
-        moveTapeUp(tape, isPlaying)
-        if(checkColl(tape,player)){
-            if(!checkId(tape, player)){
-                isPlaying = false
-            }
-        }
-        if(checkPassPlayer(tape, player)){
-            if(isPass){
-                isPass = false
-                addPoints(points)
-            }
-        }
-        if(!isPlaying){
-            startGameOverMenu(layerMenu, pauseRestartText, buttonRestart,
-                buttonReturn)
-        }
-        moveTapeToSpawn(tape, screen, points)
+    fun restartGame(points: TextView) {
+        points.text = "0"
+        tapeSpeed = 4f
+        isPlaying = true
     }
-
     private fun startGameOverMenu(layerMenu: ImageView, pauseRestartText: TextView,
                                   buttonRestart: ImageView, buttonReturn: Button) {
         layerMenu.visibility = View.VISIBLE
@@ -128,5 +109,27 @@ object PlayerObjArray: ArrayList<Player>() {
         buttonReturn.visibility = View.VISIBLE
         pauseRestartText.text = "Game Over"
     }
+
+    fun update(tape: ImageView, player: ImageView, points:TextView,
+               layerMenu : ImageView, pauseRestartText: TextView,
+               buttonRestart: ImageView, buttonReturn: Button,
+               screen: DisplayMetrics){
+        moveTapeUp(tape, isPlaying)
+        if(checkColl(tape,player)){
+            if(!checkId(tape, player)){
+                isPlaying = false
+                startGameOverMenu(layerMenu, pauseRestartText, buttonRestart,
+                    buttonReturn)
+            }
+        }
+        if(checkPassPlayer(tape, player)){
+            if(isPass){
+                isPass = false
+                addPoints(points)
+            }
+        }
+        moveTapeToSpawn(tape, screen, points)
+    }
+
 
 }

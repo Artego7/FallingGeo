@@ -11,10 +11,12 @@
         android:theme="@style/Theme.FallingGeo"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".game.InfinityModeActivity"
+            android:name=".activity_game_infinityy"
             android:exported="false" />
         <activity
-            android:name=".RegistActivity" />
+            android:name=".game.InfinityModeActivity"
+            android:exported="false" />
+        <activity android:name=".RegistActivity" />
         <activity
             android:name=".ui.GameMenusActivity"
             android:exported="true" />

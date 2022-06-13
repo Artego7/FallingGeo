@@ -17,7 +17,7 @@ class InfinityModeMenuFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentInfinityModeBinding.inflate(inflater)
-    binding.infinityModeButton.setOnClickListener(){
+    binding.infinityModeButton.setOnClickListener{
         activity?.let{
             val intent = Intent (it, InfinityModeActivity::class.java)
             it.startActivity(intent)

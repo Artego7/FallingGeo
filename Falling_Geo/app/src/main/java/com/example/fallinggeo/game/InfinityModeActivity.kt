@@ -15,6 +15,11 @@ import com.example.fallinggeo.R
 import com.example.fallinggeo.data.PlayerObjArray
 import com.example.fallinggeo.ui.GameMenusActivity
 
+/****************************************
+    No se molt be perque hi ha vegades que el joc es para
+    y deixa de funcionar part d'aquest activity, pero
+    tot el demés funciona i no salta cap error
+*****************************************/
 
 class InfinityModeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +38,10 @@ class InfinityModeActivity : AppCompatActivity() {
         val buttonRestart = findViewById<ImageView>(R.id.restart_image)
         val buttonResume = findViewById<Button>(R.id.resume_button_infinity)
         val buttonReturn = findViewById<Button>(R.id.back_button_infinity)
+        //---------------- Screen Width & Height ----------------//
+            val displayMetrics = DisplayMetrics()
+            windowManager.defaultDisplay.getMetrics(displayMetrics)
+
         //-- Init Pause & Restart --//
         layerPause.visibility = View.INVISIBLE
         pauseRestartText.visibility = View.INVISIBLE
@@ -41,44 +50,42 @@ class InfinityModeActivity : AppCompatActivity() {
         buttonReturn.visibility = View.INVISIBLE
 
         //-- Active Pause & Restart --//
-        buttonPause.setOnClickListener(){
-            PlayerObjArray.isPause = true
+        buttonPause.setOnClickListener{
+            PlayerObjArray.isPlaying = false
             layerPause.visibility = View.VISIBLE
             pauseRestartText.visibility = View.VISIBLE
             buttonResume.visibility = View.VISIBLE
             buttonReturn.visibility = View.VISIBLE
             pauseRestartText.text = "Pause"
         }
-        buttonResume.setOnClickListener(){
-            PlayerObjArray.isPause = false
+        buttonResume.setOnClickListener{
+            PlayerObjArray.isPlaying = true
             layerPause.visibility = View.INVISIBLE
             pauseRestartText.visibility = View.INVISIBLE
             buttonResume.visibility = View.INVISIBLE
             buttonReturn.visibility = View.INVISIBLE
         }
-        buttonReturn.setOnClickListener(){
+        buttonReturn.setOnClickListener{
             PlayerObjArray.isPlaying = true
-            PlayerObjArray.isPause = false
             startActivity(Intent(this, GameMenusActivity::class.java))
             finish()
         }
-        //No va bien
-        buttonRestart.setOnClickListener(){
-            PlayerObjArray.isPause = false
+        //No va be
+        buttonRestart.setOnClickListener{
+            PlayerObjArray.moveTapeToSpawn(tape, displayMetrics, pointsInit)
+            PlayerObjArray.restartGame(pointsInit)
             layerPause.visibility = View.INVISIBLE
             pauseRestartText.visibility = View.INVISIBLE
             buttonRestart.visibility = View.INVISIBLE
             buttonReturn.visibility = View.INVISIBLE
         }
-        //---------------- Screen Width & Height ----------------//
-            val displayMetrics = DisplayMetrics()
-            windowManager.defaultDisplay.getMetrics(displayMetrics)
-            val screenHeight = displayMetrics.heightPixels
-            val screenWidth = displayMetrics.widthPixels
-        //------------------------------------------------------//
+
+        //--------------- Set Player and Tape ---------------//
         PlayerObjArray.setPlayer(playerInfinityInit, pointsInit)
         PlayerObjArray.setSpawnTape(tape, displayMetrics)
-        constrain.setOnClickListener(){
+
+        //---------------- On Click Screen ----------------//
+        constrain.setOnClickListener{
             if(PlayerObjArray.isPlaying){
                 PlayerObjArray.changeTape(tape)
             }
@@ -87,7 +94,7 @@ class InfinityModeActivity : AppCompatActivity() {
         val mainHandler = Handler(Looper.getMainLooper())
         mainHandler.post(object : Runnable {
             override fun run() {
-                if(!PlayerObjArray.isPause){
+                if(PlayerObjArray.isPlaying){
                     PlayerObjArray.update(tape, playerInfinityInit,
                         pointsInit, layerPause, pauseRestartText,
                         buttonRestart, buttonReturn, displayMetrics)
@@ -95,24 +102,5 @@ class InfinityModeActivity : AppCompatActivity() {
                 mainHandler.postDelayed(this, 16)
             }
         })
-    }
-
-    override fun onResume() {
-        super.onResume()
-        //-------------------- Restart & Pause --------------------//
-        val buttonPause = findViewById<ImageView>(R.id.pause_button_infinity)
-        val layerPause = findViewById<ImageView>(R.id.pause_menu_infinity)
-        val pauseRestartText = findViewById<TextView>(R.id.pause_text_infinity)
-        val buttonRestart = findViewById<ImageView>(R.id.restart_image)
-        val buttonResume = findViewById<Button>(R.id.resume_button_infinity)
-        val buttonReturn = findViewById<Button>(R.id.back_button_infinity)
-
-        layerPause.visibility = View.INVISIBLE
-        pauseRestartText.visibility = View.INVISIBLE
-        buttonRestart.visibility = View.INVISIBLE
-        buttonResume.visibility = View.INVISIBLE
-        buttonReturn.visibility = View.INVISIBLE
-        PlayerObjArray.isPlaying = true
-        PlayerObjArray.isPause = false
     }
 }

@@ -25,7 +25,7 @@ class GameMenusActivity : AppCompatActivity() {
         binding.tabs.setupWithViewPager(binding.viewPager)
 
         //-----------Esto gestiona el menú desplegable-----------//
-        binding.menuButton.setOnMenuItemClickListener() { menuItem ->
+        binding.menuButton.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.logOutItemMenu -> logout()
                     .also { needsRefresh = true }
