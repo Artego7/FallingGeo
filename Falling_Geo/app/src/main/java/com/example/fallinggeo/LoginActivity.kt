@@ -49,8 +49,6 @@ class LoginActivity : AppCompatActivity() {
         }
         //---------------- Check all parameters -----------------//
         buttonInput.setOnClickListener(){
-            startActivity(Intent(this, GameMenusActivity::class.java))
-            finish()
             if(validateUsername(usernameInput?.text) && validateEmail(emailInput?.text) && validatePassword(passwordInput?.text)){
                 startActivity(Intent(this, GameMenusActivity::class.java))
                 finish()
@@ -71,11 +69,6 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, RegistActivity::class.java))
             finish()
         }
-
-    //aaa("hola")
-
-
-
     }
 
     private fun validateUsername(user: Editable?): Boolean {
