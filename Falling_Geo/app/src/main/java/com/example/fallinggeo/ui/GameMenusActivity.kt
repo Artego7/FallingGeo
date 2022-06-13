@@ -20,7 +20,8 @@ class GameMenusActivity : AppCompatActivity() {
 
         val sectionPagerAdapter = SectionPagerAdapter(this, supportFragmentManager)
         binding.viewPager.adapter = sectionPagerAdapter
-
+        // Volia fer que el el tab d'inici fós el de History pero no he trobat com fer'ho
+        //També amb el tema de tornar del apartat del joc tampoc he sapigut com fer que torni al tab del que venia
         binding.tabs.setupWithViewPager(binding.viewPager)
 
         //-----------Esto gestiona el menú desplegable-----------//
