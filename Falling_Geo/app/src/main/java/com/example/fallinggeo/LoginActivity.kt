@@ -23,7 +23,6 @@ class LoginActivity : AppCompatActivity() {
         val buttonInput= findViewById<Button>(R.id.button_login)
         val registerTextInput= findViewById<TextView>(R.id.text_to_regist)
 
-        
         usernameInput.setOnFocusChangeListener { view, hasFocus ->
             if(!hasFocus){
                 val username = usernameInput.text

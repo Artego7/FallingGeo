@@ -17,9 +17,7 @@ class ShopFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentShopBinding.inflate(inflater)
-
         return binding.root
         }
-
     }
 
