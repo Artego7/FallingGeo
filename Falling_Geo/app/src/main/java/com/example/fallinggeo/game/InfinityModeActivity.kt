@@ -1,17 +1,20 @@
 package com.example.fallinggeo.game
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract
+import android.os.Handler
+import android.os.Looper
+import android.util.DisplayMetrics
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.example.fallinggeo.MainActivity
 import com.example.fallinggeo.R
-import com.example.fallinggeo.data.LevelObjArray
-import java.util.logging.Level
+import com.example.fallinggeo.data.PlayerObjArray
+import com.example.fallinggeo.ui.GameMenusActivity
+
 
 class InfinityModeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,29 +22,97 @@ class InfinityModeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_game_infinity)
 
         val playerInfinityInit = findViewById<ImageView>(R.id.player_infinity)
-        val buttonReturn = findViewById<Button>(R.id.back_button_infinity)
-        val constrain = findViewById<ConstraintLayout>(R.id.screen_infinity)
+        val constrain = findViewById<ConstraintLayout>(R.id.infinity_game_mode_constrain)
         val tape = findViewById<ImageView>(R.id.tape_infinity)
-        val test = findViewById<TextView>(R.id.testtextinfinity)
+        val pointsInit = findViewById<TextView>(R.id.points_text)
 
-        LevelObjArray.setPlayer(playerInfinityInit)
+        //-------------------- Restart & Pause --------------------//
+        val buttonPause = findViewById<ImageView>(R.id.pause_button_infinity)
+        val layerPause = findViewById<ImageView>(R.id.pause_menu_infinity)
+        val pauseRestartText = findViewById<TextView>(R.id.pause_text_infinity)
+        val buttonRestart = findViewById<ImageView>(R.id.restart_image)
+        val buttonResume = findViewById<Button>(R.id.resume_button_infinity)
+        val buttonReturn = findViewById<Button>(R.id.back_button_infinity)
+        //-- Init Pause & Restart --//
+        layerPause.visibility = View.INVISIBLE
+        pauseRestartText.visibility = View.INVISIBLE
+        buttonRestart.visibility = View.INVISIBLE
+        buttonResume.visibility = View.INVISIBLE
+        buttonReturn.visibility = View.INVISIBLE
+
+        //-- Active Pause & Restart --//
+        buttonPause.setOnClickListener(){
+            PlayerObjArray.isPause = true
+            layerPause.visibility = View.VISIBLE
+            pauseRestartText.visibility = View.VISIBLE
+            buttonResume.visibility = View.VISIBLE
+            buttonReturn.visibility = View.VISIBLE
+            pauseRestartText.text = "Pause"
+        }
+        buttonResume.setOnClickListener(){
+            PlayerObjArray.isPause = false
+            layerPause.visibility = View.INVISIBLE
+            pauseRestartText.visibility = View.INVISIBLE
+            buttonResume.visibility = View.INVISIBLE
+            buttonReturn.visibility = View.INVISIBLE
+        }
         buttonReturn.setOnClickListener(){
-            startActivity(Intent(this, MainActivity::class.java))
+            PlayerObjArray.isPlaying = true
+            PlayerObjArray.isPause = false
+            startActivity(Intent(this, GameMenusActivity::class.java))
             finish()
         }
-
-        LevelObjArray.setFirstTape(tape)
-        constrain.setOnClickListener(){
-            LevelObjArray.changeTape(tape, test)
-            LevelObjArray.moveTapeToPlayer(tape)
+        //No va bien
+        buttonRestart.setOnClickListener(){
+            PlayerObjArray.isPause = false
+            layerPause.visibility = View.INVISIBLE
+            pauseRestartText.visibility = View.INVISIBLE
+            buttonRestart.visibility = View.INVISIBLE
+            buttonReturn.visibility = View.INVISIBLE
         }
-        LevelObjArray.spawnTape(tape)
-        LevelObjArray.moveTapeToSpawn(tape)
-
+        //---------------- Screen Width & Height ----------------//
+            val displayMetrics = DisplayMetrics()
+            windowManager.defaultDisplay.getMetrics(displayMetrics)
+            val screenHeight = displayMetrics.heightPixels
+            val screenWidth = displayMetrics.widthPixels
+        //------------------------------------------------------//
+        PlayerObjArray.setPlayer(playerInfinityInit, pointsInit)
+        PlayerObjArray.setSpawnTape(tape, displayMetrics)
+        constrain.setOnClickListener(){
+            if(PlayerObjArray.isPlaying){
+                PlayerObjArray.changeTape(tape)
+            }
+        }
+        //----------------- Game Actions -----------------//
+        val mainHandler = Handler(Looper.getMainLooper())
+        mainHandler.post(object : Runnable {
+            override fun run() {
+                if(!PlayerObjArray.isPause){
+                    PlayerObjArray.update(tape, playerInfinityInit,
+                        pointsInit, layerPause, pauseRestartText,
+                        buttonRestart, buttonReturn, displayMetrics)
+                }
+                mainHandler.postDelayed(this, 16)
+            }
+        })
     }
+
     override fun onResume() {
         super.onResume()
-//        val tape = findViewById<ImageView>(R.id.tape_infinity)
-//        LevelObjArray.moveTapeToPlayer(tape)
+        //-------------------- Restart & Pause --------------------//
+        val buttonPause = findViewById<ImageView>(R.id.pause_button_infinity)
+        val layerPause = findViewById<ImageView>(R.id.pause_menu_infinity)
+        val pauseRestartText = findViewById<TextView>(R.id.pause_text_infinity)
+        val buttonRestart = findViewById<ImageView>(R.id.restart_image)
+        val buttonResume = findViewById<Button>(R.id.resume_button_infinity)
+        val buttonReturn = findViewById<Button>(R.id.back_button_infinity)
+
+        layerPause.visibility = View.INVISIBLE
+        pauseRestartText.visibility = View.INVISIBLE
+        buttonRestart.visibility = View.INVISIBLE
+        buttonResume.visibility = View.INVISIBLE
+        buttonReturn.visibility = View.INVISIBLE
+        PlayerObjArray.isPlaying = true
+        PlayerObjArray.isPause = false
     }
 }

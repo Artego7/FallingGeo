@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/history_game_mode_contrain"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -17,7 +18,7 @@
         app:srcCompat="@drawable/background_game" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/test_mode"
         android:layout_width="287dp"
         android:layout_height="164dp"
         android:rotation="-41"

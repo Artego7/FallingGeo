@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import com.example.fallinggeo.game.InfinityModeActivity
+import com.example.fallinggeo.ui.GameMenusActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -13,9 +13,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val startButton = findViewById<Button>(R.id.start_button)
         startButton.setOnClickListener(){
-            startActivity(Intent(this, InfinityModeActivity::class.java))
+            startActivity(Intent(this, GameMenusActivity::class.java))
             finish()
         }
-
     }
 }

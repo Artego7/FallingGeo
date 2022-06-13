@@ -8,7 +8,8 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/g_triangle"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FallingGeo">
+        android:theme="@style/Theme.FallingGeo"
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".game.InfinityModeActivity"
             android:exported="false" />
