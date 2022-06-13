@@ -47,26 +47,25 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
-
+        //---------------- Check all parameters -----------------//
         buttonInput.setOnClickListener(){
-            //TESTING
             startActivity(Intent(this, GameMenusActivity::class.java))
             finish()
-//            if(validateUsername(usernameInput?.text) && validateEmail(emailInput?.text) && validatePassword(passwordInput?.text)){
-//                startActivity(Intent(this, GameMenusActivity::class.java))
-//                finish()
-//            }else {
-//                Toast.makeText(this, "Algunos de los campos no són correctos", Toast.LENGTH_SHORT).show()
-//                if (!validateUsername(usernameInput?.text)){
-//                    usernameInput.error = "User Incorrecto"
-//                }
-//                if (!validateEmail(emailInput?.text)){
-//                    emailInput.error = "Email incorrecto"
-//                }
-//                if (!validatePassword(passwordInput?.text)){
-//                    passwordInput.error = "La contraseña ha de contener mayusculas, minusculas y numeros"
-//                }
-//            }
+            if(validateUsername(usernameInput?.text) && validateEmail(emailInput?.text) && validatePassword(passwordInput?.text)){
+                startActivity(Intent(this, GameMenusActivity::class.java))
+                finish()
+            }else {
+                Toast.makeText(this, "Algunos de los campos no són correctos", Toast.LENGTH_SHORT).show()
+                if (!validateUsername(usernameInput?.text)){
+                    usernameInput.error = "User Incorrecto"
+                }
+                if (!validateEmail(emailInput?.text)){
+                    emailInput.error = "Email incorrecto"
+                }
+                if (!validatePassword(passwordInput?.text)){
+                    passwordInput.error = "La contraseña ha de contener mayusculas, minusculas y numeros"
+                }
+            }
         }
         registerTextInput.setOnClickListener(){
             startActivity(Intent(this, RegistActivity::class.java))

@@ -59,7 +59,7 @@ class RegistActivity : AppCompatActivity() {
                 }
             }
         }
-
+        //---------------- Check all parameters -----------------//
         buttonInput.setOnClickListener(){
             if(validateUsername(usernameInput?.text) && validateEmail(emailInput?.text)
                 && validatePassword(passwordInput?.text.toString()) && validatePassword(passwordConfirmInput?.text.toString())){

@@ -26,11 +26,7 @@ class HistoryModeMenuFragment : Fragment() {
         val ctx = context ?: return binding.root.also { activity?.finish() }
 
         binding.levelList.adapter = LevelListAdapter(ctx, LevelsHistoryObjArray)
-//        val view =  inflater.inflate(R.layout.fragment_history_mode, container, false)
-//        context?.let {
-//            view.findViewById<RecyclerView>(R.id.level_list).adapter = LevelListAdapter(it)
-//        }
-//        return view
+
         return binding.root
     }
 }

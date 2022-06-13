@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val startButton = findViewById<Button>(R.id.start_button)
         startButton.setOnClickListener(){
-            startActivity(Intent(this, GameMenusActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
     }
